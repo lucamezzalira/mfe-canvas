@@ -1,8 +1,9 @@
-# Micro-Frontend Canvas — ShopNow Checkout
+# Micro-Frontend Canvas
 
-> Filled example from the ShopNow e-commerce case study in the [Micro-Frontend Canvas PDF](../micro-frontend-canvas.pdf).
+> One micro-frontend, one canvas. This document captures the key architectural and implementation decisions for this micro-frontend. Create new iterations rather than overwriting previous versions.
 >
 > _Micro-Frontend Canvas v1.0 — © Luca Mezzalira — CC BY-NC 4.0_
+> _https://buildingmicrofrontends.com_
 
 ---
 
@@ -10,65 +11,87 @@
 
 | Field | Value |
 |-------|-------|
-| Software System | ShopNow e-commerce |
-| Owned by Team | Checkout Team |
-| Canvas Date | 30th March 2026 |
-| Iteration | 1 |
+| **Software System** | ShopNow E-commerce |
+| **Owned by Team** | Frosties Team |
+| **Canvas Date** | 30th March 2026 |
+| **Iteration** | 1 |
 
 ---
 
 ## Micro-Frontend Description
 
-_Checkout Flow — handles complete order submission from cart review to confirmation. Includes order summary, shipping selection, payment processing, and confirmation screens._
+_Name and brief description: what does this MFE do? What user journey or business capability does it enable?_
 
-> Enables the end-to-end checkout user journey after a customer leaves the cart.
+> Checkout Flow: Handles complete order submission from cart review to confirmation. Includes order summary, shipping selection, payment processing, and confirmation screens.
 
 ---
 
 ## Split Strategy
 
-_Vertical split — owns all `/checkout/*` routes exclusively._
+_Horizontal split (multiple MFEs in the same view) or Vertical split (one MFE per view or group of views)?_
 
-> No other micro-frontend shares the checkout view. Coordination with other teams happens through events and APIs, not shared UI composition.
+> Vertical split: Owns all /checkout/* routes exclusively.
 
 ---
 
 ## Boundaries Validation
 
-_Receives only `userId` and `cartId` props. Fetches checkout data via GraphQL APIs. Represents the complete checkout flow. Deployed independently via a dedicated CI/CD pipeline._
+_Verify the micro-frontend has minimal API surface, is context-aware and self-contained, coarse-grained in nature, and can be deployed independently._
 
-> Minimal API surface (2 props). Self-contained data fetching. Coarse-grained boundary covering the full checkout capability. Independent deployment without cross-team coordination.
+> - Receives only `userId` and `cartId` props
+> - Fetches checkout data independently via GraphQL APIs
+> - Represents complete checkout flow (cart review to order confirmation)
+> - Deployed independently via dedicated CI/CD pipeline
 
 ---
 
 ## Dependencies
 
-**Application shell:** React 18.2, React Router 6.x, auth context, event emitter.
+_External dependencies such as shared libraries, application shell, or APIs._
 
-**APIs:** Payment Gateway v3, Shipping Service v2, Discount Service v1.
-
-**Shared libraries:** Design System v4.1, Stripe SDK v3.
+> **Shell Provides:**
+> - React 18.2, React Router 6.x, auth context, event emitter
+>
+> **APIs:**
+> - Payment Gateway v3
+> - Shipping Service v2
+> - Discount Service v1
+>
+> **Libraries:**
+> - Design System v4.1
+> - Stripe SDK v3
 
 ---
 
 ## Communication Methodology
 
+_How data flows into and out of the micro-frontend, including contracts and versioning._
+
 **Inputs:**
 
-> - `cartId` from route params
-> - Auth token from cookie
+> - `cartId` from route parameters
+> - `userId` from auth context
+> - Auth token from HTTP-only cookie (managed by shell)
 
 **Outputs:**
 
-> Emits `checkout:started`, `checkout:completed` (with `orderId`, `orderTotal`), and `checkout:abandoned` events via the shell's event emitter.
+> - `checkout:started` event (with cartId, userId, timestamp)
+> - `checkout:completed` event (with orderId, orderTotal)
+> - `checkout:abandoned` event (with cartId, reason)
+>
+> All events emitted via shell's event emitter.
 
 **Contracts & Versioning:**
 
-> Shell deployment coordination requires semantic versioning. Event payloads versioned alongside shell releases.
+> - Contracts versioned using semantic versioning
+> - Breaking changes require 2-sprint deprecation window
+> - Cart team owns `cartId` contract; Payments team owns `checkout:completed`
 
 ---
 
 ## Organisational Constraints
+
+_Any organisational requirement that limits the freedom of decision (budget, timeline, compliance, team size, mandated tools)._
 
 > - Q1 2026 delivery deadline for peak season
 > - PCI-DSS Level 1 compliance required
@@ -81,9 +104,11 @@ _Receives only `userId` and `cartId` props. Fetches checkout data via GraphQL AP
 
 ## Technical Constraints
 
+_Any technical requirement that restricts the freedom of decision (stack, infrastructure, architectural patterns, SLAs)._
+
 > - React 18+ and TypeScript 5+
 > - AWS CloudFront/S3 deployment
-> - 300 KB bundle limit
+> - 300KB bundle limit (gzipped)
 > - OAuth 2.0 auth via shell
 > - BFF pattern for APIs
 > - 2-second response SLA
@@ -93,50 +118,70 @@ _Receives only `userId` and `cartId` props. Fetches checkout data via GraphQL AP
 
 ## Composition Context
 
-_Client-side rendering with Module Federation v2. Loaded by the application shell on `/checkout` navigation. Runs as a standalone React app within the shell container._
+_How is this micro-frontend composed and integrated into the application (e.g., CSR or SSR, Module Federation, transclusion, web components)?_
+
+> - Client-side rendering with Module Federation v2
+> - Loaded by application shell on /checkout navigation
+> - Runs as standalone React app within shell container
 
 ---
 
 ## Governance & Observability
 
+_How is this MFE monitored, who responds to incidents, and what shared standards are enforced?_
+
 **Observability:**
 
-> RUM monitoring in production. Track Lighthouse score (> 90), LCP (< 2.5s), FID (< 100ms), and CLS (< 0.1).
+> - RUM monitoring via Datadog tracks all checkout events
+> - Key metrics: response time (p50/p95/p99), error rate, abandonment rate
+> - Distributed tracing correlates checkout with cart and payment MFEs
+> - Alerts trigger when LCP exceeds 3 seconds or error rate exceeds 1%
 
 **Incident Response:**
 
-> Checkout Team owns on-call for checkout-related production incidents.
+> - Checkout MFE owned by Frosties Team (primary on-call)
+> - Shell/Platform team owns composite application health
+> - Escalation: Frosties Team ? Platform Lead ? VP Engineering
+> - All incidents logged in shared channel; post-mortems within 48 hours
 
 **Shared Standards:**
 
-> Company-wide Design System v4.1. Shared shell auth and event emitter contracts.
+> - All MFEs must maintain: Lighthouse >90, bundle <300KB, error rate <0.5%
+> - CI/CD gates enforce automatically; violations block deployment
+> - Design System v4.1 required; v3.x deprecated with 6-month notice
 
 ---
 
 ## Quality Guardrails
 
-1. Bundle max 300 KB with code-splitting by route. Lazy-load Stripe SDK on the payment step.
-2. Lighthouse > 90, LCP < 2.5s, FID < 100ms, CLS < 0.1. RUM monitoring in production.
-3. ArchUnit tests enforce no circular dependencies, validate BFF pattern, and verify module boundaries.
+_Define the three most important guardrails to implement (e.g., bundle size limits, performance budgets, accessibility standards)._
+
+1. Bundle max 300KB gzipped with code-splitting by route. Lazy load Stripe SDK on payment step only.
+2. Lighthouse >90, LCP <2.5s, FID <100ms, CLS <0.1. RUM monitoring in production.
+3. ArchUnit tests enforce no circular dependencies, validate BFF pattern, verify module boundaries.
 
 ---
 
 ## Challenges & Risks
 
+_Identify current challenges and risks: organisational, architectural, and technical. Include mitigation strategies._
+
 | Challenge | Type | Mitigation |
 |-----------|------|------------|
-| Hidden coupling on cart pricing logic | Arch | Define explicit pricing contract with Cart team; avoid direct cart module imports |
-| Stripe SDK 85 KB impacts bundle budget | Tech | Lazy-load Stripe SDK on payment step only |
-| Payment Gateway 95% SLA | Tech | Retry logic and fallback payment flow |
-| Shell deployment coordination | Arch | Semantic versioning for shell and MFE releases |
-| Q2 PCI audit may require architecture changes | Org | Schedule pre-audit architecture review in Q1 |
-| Third-party address validation reliability | Tech | Circuit breaker around validation service |
-| 10x holiday traffic spike | Tech | Load testing before peak season |
+| Cart team owns pricing logic that checkout depends on, creating hidden coupling | Org | Define explicit contract between teams; schedule regular sync |
+| Shell team is a bottleneck for routing changes across 5 MFEs | Arch | Semantic versioning for shell API; consumer-driven contracts |
+| No clear incident owner for composite checkout-to-payment flow | Org | Define escalation path; platform team owns composite health |
+| Design System v4.1 evolving faster than MFEs can adopt | Arch | 4-week notice for breaking changes; version pinning per MFE |
+| Q2 PCI audit may require architecture changes mid-implementation | Org | Document security decisions now; review with compliance early |
+| Stripe SDK 85KB impacts bundle budget | Tech | Lazy load on payment step only; validate in CI |
 
 ---
 
 ## Canvas History
 
+_Track iterations and key changes over time._
+
 | Iteration | Date | Key Changes |
 |-----------|------|-------------|
-| 1 | 30th March 2026 | Initial canvas from half-day workshop |
+| 1 | 30th March 2026 | Initial canvas |
+| | | |
