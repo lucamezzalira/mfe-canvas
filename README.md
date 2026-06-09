@@ -23,10 +23,14 @@ The fundamental principle: **one micro-frontend, one canvas.**
 ## What's in This Repo
 
 ```
-??? Micro-Frontend Canvas.pdf   # Full guide with examples and blank template
-??? mfe-canvas.md               # Markdown template to embed in your MFE repo
-??? examples/                   # Community-contributed canvas examples
+??? micro-frontend-canvas.pdf        # Full guide with examples and blank template
+??? MFE_CANVAS.md                    # Markdown template to embed in your MFE repo
+??? examples/
+    ??? shopnow-checkout.md          # E-commerce checkout flow (from the PDF guide)
+    ??? ...                          # Community-contributed examples
 ```
+
+See [examples/shopnow-checkout.md](examples/shopnow-checkout.md) for a complete filled canvas based on the ShopNow e-commerce example from the PDF guide.
 
 ---
 
@@ -41,7 +45,7 @@ The fundamental principle: **one micro-frontend, one canvas.**
 
 ### Option 2: Assessment (For Existing MFEs)
 
-1. Copy `mfe-canvas.md` into your micro-frontend's repository
+1. Copy `MFE_CANVAS.md` into your micro-frontend's repository
 2. Fill each section based on what's actually happening today, not what you planned
 3. Identify gaps: which sections are hard to answer? That's where your problems are
 4. Use the gaps to prioritise what needs fixing
@@ -94,7 +98,7 @@ This combination works across Claude Code, Cursor, Windsurf, and GitHub Copilot.
 
 ```
 1. Complete the canvas (planning or assessment mode)
-2. Store mfe-canvas.md in your repository
+2. Store MFE_CANVAS.md in your repository
 3. Install mfe-skills in your project
 4. Your code assistant now has both architectural context and governance rules
 5. Generate specs, scaffold implementations, validate boundaries
@@ -116,7 +120,7 @@ We encourage teams to share their completed canvases (anonymised if needed) so o
 
 To contribute an example:
 1. Fork this repo
-2. Add your canvas to `examples/` (use `mfe-canvas.md` as template)
+2. Add your canvas to `examples/` (use `MFE_CANVAS.md` as template)
 3. Open a PR with a brief description of your context (industry, team size, MFE count)
 
 ---
