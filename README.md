@@ -153,7 +153,7 @@ You are free to use, share, and adapt this material for non-commercial purposes,
 
 - [Building Micro-Frontends (O'Reilly)](https://buildingmicrofrontends.com) - Comprehensive guide to micro-frontend architecture
 - [MFE Skills](https://github.com/lucamezzalira/mfe-skills) - AI code assistant skills for micro-frontend governance
-- [buildingmicrofrontends.com](https://buildingmicrofrontends.com) - Articles, case studies, and community resources
+- [buildingmicrofrontends.com](https://buildingmicrofrontends.com) - Newsletter, articles, case studies, and community resources
 
 ---
 
@@ -162,4 +162,4 @@ You are free to use, share, and adapt this material for non-commercial purposes,
 **Luca Mezzalira** - Solutions architect specialising in frontend architectures, distributed systems, and cloud infrastructure. Author of Building Micro-Frontends (O'Reilly). Over 20 years helping teams worldwide adopt micro-frontend architecture.
 
 - [LinkedIn](https://linkedin.com/in/lucamezzalira)
-- [buildingmicrofrontends.com](https://buildingmicrofrontends.com)
+- [buildingmicrofrontends.com](https://buildingmicrofrontends.com) — newsletter, articles, and resources
