@@ -163,3 +163,11 @@ You are free to use, share, and adapt this material for non-commercial purposes,
 
 - [LinkedIn](https://linkedin.com/in/lucamezzalira)
 - [buildingmicrofrontends.com](https://buildingmicrofrontends.com) — newsletter, articles, and resources
+
+---
+
+## Support
+
+If you find the Micro-Frontend Canvas useful, you can [buy me a coffee](https://www.buymeacoffee.com/mezzalab).
+
+[![Buy me a coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/mezzalab)
