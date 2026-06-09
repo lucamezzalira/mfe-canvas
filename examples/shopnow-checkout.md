@@ -2,7 +2,7 @@
 
 > One micro-frontend, one canvas. This document captures the key architectural and implementation decisions for this micro-frontend. Create new iterations rather than overwriting previous versions.
 >
-> _Micro-Frontend Canvas v1.0 — © Luca Mezzalira — CC BY-NC 4.0_
+> _Micro-Frontend Canvas v1.0 â€” Â© Luca Mezzalira â€” CC BY-NC 4.0_
 > _https://buildingmicrofrontends.com_
 
 ---
@@ -141,7 +141,7 @@ _How is this MFE monitored, who responds to incidents, and what shared standards
 
 > - Checkout MFE owned by Frosties Team (primary on-call)
 > - Shell/Platform team owns composite application health
-> - Escalation: Frosties Team ? Platform Lead ? VP Engineering
+> - Escalation: Frosties Team â†’ Platform Lead â†’ VP Engineering
 > - All incidents logged in shared channel; post-mortems within 48 hours
 
 **Shared Standards:**
@@ -164,16 +164,16 @@ _Define the three most important guardrails to implement (e.g., bundle size limi
 
 ## Challenges & Risks
 
-_Identify current challenges and risks: organisational, architectural, and technical. Include mitigation strategies._
+_Identify current challenges and risks. Include mitigation strategies._
 
-| Challenge | Type | Mitigation |
-|-----------|------|------------|
-| Cart team owns pricing logic that checkout depends on, creating hidden coupling | Org | Define explicit contract between teams; schedule regular sync |
-| Shell team is a bottleneck for routing changes across 5 MFEs | Arch | Semantic versioning for shell API; consumer-driven contracts |
-| No clear incident owner for composite checkout-to-payment flow | Org | Define escalation path; platform team owns composite health |
-| Design System v4.1 evolving faster than MFEs can adopt | Arch | 4-week notice for breaking changes; version pinning per MFE |
-| Q2 PCI audit may require architecture changes mid-implementation | Org | Document security decisions now; review with compliance early |
-| Stripe SDK 85KB impacts bundle budget | Tech | Lazy load on payment step only; validate in CI |
+| Challenge | Mitigation |
+|-----------|------------|
+| Cart team owns pricing logic that checkout depends on, creating hidden coupling | Define explicit contract between teams; schedule regular sync |
+| Shell team is a bottleneck for routing changes across 5 MFEs | Semantic versioning for shell API; consumer-driven contracts |
+| No clear incident owner for composite checkout-to-payment flow | Define escalation path; platform team owns composite health |
+| Design System v4.1 evolving faster than MFEs can adopt | 4-week notice for breaking changes; version pinning per MFE |
+| Q2 PCI audit may require architecture changes mid-implementation | Document security decisions now; review with compliance early |
+| Stripe SDK 85KB impacts bundle budget | Lazy load on payment step only; validate in CI |
 
 ---
 
