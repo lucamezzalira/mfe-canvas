@@ -159,7 +159,7 @@ You are free to use, share, and adapt this material for non-commercial purposes,
 
 ## Author
 
-**Luca Mezzalira** - Solutions architect specialising in frontend architectures, distributed systems, and cloud infrastructure. Author of Building Micro-Frontends (O'Reilly). Over 20 years helping teams worldwide adopt micro-frontend architecture.
+**Luca Mezzalira** - Solutions architect specialising in frontend architectures, distributed systems, and cloud infrastructure. Author of Building Micro-Frontends (O'Reilly). Over 20 years in the industry and a decade helping teams worldwide adopting micro-frontends architecture.
 
 - [LinkedIn](https://linkedin.com/in/lucamezzalira)
 - [buildingmicrofrontends.com](https://buildingmicrofrontends.com) — newsletter, articles, and resources
