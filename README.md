@@ -27,10 +27,11 @@ The fundamental principle: **one micro-frontend, one canvas.**
 ??? MFE_CANVAS.md                    # Markdown template to embed in your MFE repo
 ??? examples/
     ??? shopnow-checkout.md          # E-commerce checkout flow (from the PDF guide)
+    ??? learnhub-learning-player.md  # E-learning video player with lesson notes
     ??? ...                          # Community-contributed examples
 ```
 
-See [examples/shopnow-checkout.md](examples/shopnow-checkout.md) for a complete filled canvas based on the ShopNow e-commerce example from the PDF guide.
+See [examples/shopnow-checkout.md](examples/shopnow-checkout.md) for a complete filled canvas based on the ShopNow e-commerce example from the PDF guide, or [examples/learnhub-learning-player.md](examples/learnhub-learning-player.md) for an e-learning platform example.
 
 ---
 
@@ -142,7 +143,7 @@ This work is licensed under [Creative Commons Attribution-NonCommercial 4.0 Inte
 
 You are free to use, share, and adapt this material for non-commercial purposes, provided appropriate credit is given.
 
-**Attribution**: © Luca Mezzalira. Originally published as part of the Micro-Frontend Canvas.
+**Attribution**: ù Luca Mezzalira. Originally published as part of the Micro-Frontend Canvas.
 
 ---
 
