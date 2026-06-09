@@ -170,4 +170,4 @@ You are free to use, share, and adapt this material for non-commercial purposes,
 
 If you find the Micro-Frontend Canvas useful, you can [buy me a coffee](https://www.buymeacoffee.com/mezzalab).
 
-[![Buy me a coffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png)](https://www.buymeacoffee.com/mezzalab)
+<a href="https://www.buymeacoffee.com/mezzalab"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy me a coffee" width="200"></a>
