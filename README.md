@@ -23,17 +23,17 @@ The fundamental principle: **one micro-frontend, one canvas.**
 ## What's in This Repo
 
 ```
-??? micro-frontend-canvas.pdf        # Full guide with examples and blank template
-??? MFE_CANVAS.md                    # Markdown template to embed in your MFE repo
-??? examples/
-    ??? shopnow-checkout.md          # E-commerce checkout flow (from the PDF guide)
-    ??? learnhub-learning.md         # E-learning video player and lesson notes
-    ??? ...                          # Community-contributed examples
+├── micro-frontend-canvas.pdf        # Full guide with examples and blank template
+├── MFE_CANVAS.md                    # Markdown template to embed in your MFE repo
+└── examples/
+    ├── shopnow-checkout.md          # E-commerce checkout flow (from the PDF guide)
+    ├── learnhub-learning.md         # E-learning video player and lesson notes
+    └── ...                          # Community-contributed examples
 ```
 
 See the examples for complete filled canvases:
-- [examples/shopnow-checkout.md](examples/shopnow-checkout.md) � E-commerce checkout flow (vertical split, payment processing, PCI compliance)
-- [examples/learnhub-learning.md](examples/learnhub-learning.md) � E-learning platform (video player + lesson notes kept together, accessibility requirements, offline capability)
+- [examples/shopnow-checkout.md](examples/shopnow-checkout.md) — E-commerce checkout flow (vertical split, payment processing, PCI compliance)
+- [examples/learnhub-learning.md](examples/learnhub-learning.md) — E-learning platform (video player + lesson notes kept together, accessibility requirements, offline capability)
 
 ---
 
@@ -145,7 +145,7 @@ This work is licensed under [Creative Commons Attribution-NonCommercial 4.0 Inte
 
 You are free to use, share, and adapt this material for non-commercial purposes, provided appropriate credit is given.
 
-**Attribution**: � Luca Mezzalira. Originally published as part of the Micro-Frontend Canvas.
+**Attribution**: © Luca Mezzalira. Originally published as part of the Micro-Frontend Canvas.
 
 ---
 
