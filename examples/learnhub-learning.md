@@ -2,7 +2,7 @@
 
 > One micro-frontend, one canvas. This document captures the key architectural and implementation decisions for this micro-frontend. Create new iterations rather than overwriting previous versions.
 >
-> _Micro-Frontend Canvas v1.0 — © Luca Mezzalira — CC BY-NC 4.0_
+> _Micro-Frontend Canvas v1.0 â€” Â© Luca Mezzalira â€” CC BY-NC 4.0_
 > _https://buildingmicrofrontends.com_
 
 ---
@@ -173,16 +173,16 @@ _Define the three most important guardrails to implement (e.g., bundle size limi
 
 ## Challenges & Risks
 
-_Identify current challenges and risks: organisational, architectural, and technical. Include mitigation strategies._
+_Identify current challenges and risks. Include mitigation strategies._
 
-| Challenge | Type | Mitigation |
-|-----------|------|------------|
-| Catalog team and Learning team both claim ownership of lesson metadata, creating unclear responsibility | Org | Define explicit data ownership: Catalog owns curriculum structure, Learning owns playback and progress |
-| Video player and lesson notes share playback state tightly, tempting future teams to split them into separate MFEs | Arch | Document in this canvas why they're kept together; add architectural fitness function to prevent splitting |
-| Certification team depends on `course:completed` event but has different release cadence | Org | 3-sprint deprecation window for contract changes; consumer-driven contract tests |
-| Mux video hosting is a single external dependency for core business capability | Arch | Implement fallback UI when Mux is unavailable; monitor Mux status page; evaluate backup provider annually |
-| Offline notes capability adds service worker complexity that could conflict with shell's caching strategy | Tech | Coordinate cache namespaces with platform team; test offline scenarios in CI |
-| Accessibility compliance is legally required but team has limited accessibility expertise | Org | Invest in accessibility training; integrate automated a11y testing; schedule quarterly manual audit |
+| Challenge | Mitigation |
+|-----------|------------|
+| Catalog team and Learning team both claim ownership of lesson metadata, creating unclear responsibility | Define explicit data ownership: Catalog owns curriculum structure, Learning owns playback and progress |
+| Video player and lesson notes share playback state tightly, tempting future teams to split them into separate MFEs | Document in this canvas why they're kept together; add architectural fitness function to prevent splitting |
+| Certification team depends on `course:completed` event but has different release cadence | 3-sprint deprecation window for contract changes; consumer-driven contract tests |
+| Mux video hosting is a single external dependency for core business capability | Implement fallback UI when Mux is unavailable; monitor Mux status page; evaluate backup provider annually |
+| Offline notes capability adds service worker complexity that could conflict with shell's caching strategy | Coordinate cache namespaces with platform team; test offline scenarios in CI |
+| Accessibility compliance is legally required but team has limited accessibility expertise | Invest in accessibility training; integrate automated a11y testing; schedule quarterly manual audit |
 
 ---
 
