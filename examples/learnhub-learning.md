@@ -3,7 +3,7 @@
 > One micro-frontend, one canvas. This document captures the key architectural and implementation decisions for this micro-frontend. Create new iterations rather than overwriting previous versions.
 >
 > _Micro-Frontend Canvas v1.0 — © Luca Mezzalira — CC BY-NC 4.0_
-> _https://buildingmicrofrontends.com_
+> _https://www.buildingmicrofrontends.com_
 
 ---
 
